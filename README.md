@@ -46,6 +46,26 @@ micromamba install -c conda-forge wandb absl-py tensorboard einops matplotlib pr
 uv pip install kmeans-pytorch torchviz fastcluster opentsne ogb kmedoids relbench pytorch_frame[full] sentence-transformers h5py pynvml
 ```
 
+##Setup-Hinweise für LiCCA (Uni Augsburg HPC-Cluster)
+
+Die Environment-Setup-Schritte oben führen auf LiCCA nicht 1:1 zum Ziel. Folgende Abweichungen wurden beim Aufsetzen festgestellt (Stand: August 2026):
+
+1. PyTorch-Version explizit pinnen
+
+micromamba install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia installiert ohne explizite Versionsangabe eine PyTorch-Version, die nicht zu den weiter unten verlinkten PyG-Wheels (torch-2.5.0+cu121.html) passt. Das führt zu undefined symbol-Fehlern beim Import von torch_scatter/torch_sparse/etc.
+
+Fix:
+micromamba install pytorch=2.5.0 torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+
+2. micromamba install pyg -c pyg NICHT verwenden
+
+Das pyg-Conda-Paket im pyg-Channel unterstützt (Stand August 2026) maximal PyTorch 2.4 als Dependency. In Kombination mit dem oben gepinnten PyTorch 2.5.0 schlägt der Solver entweder mit einem klaren Konflikt fehl, oder downgradet PyTorch still im Hintergrund auf eine mit pyg kompatible Version, wenn pytorch und pyg in getrennten install-Aufrufen installiert werden. 
+
+Fix: torch_geometric stattdessen über pip installieren, das respektiert die vorhandene PyTorch-Version und hat keine eigenen kompilierten Kernel:
+
+uv pip install torch_geometric
+
+
 # Experiments
 
 To reproduce our experimental results on the RelBench benchmark:

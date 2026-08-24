@@ -1,0 +1,38 @@
+# =============================================================================
+# Konfigurationsdatei für SLURM Job-Array — GROßE Experimente
+# Eine Zeile = ein main_node_ddp.py Lauf.
+# =============================================================================
+# Quelle: run-large-base-experiments.sh
+# Laut Paper (Abschnitt 4.1): "For tasks with more than 1M training nodes,
+# we fix the number of layers to L = 4 due to compute budgets... For larger
+# datasets, we use a batch size of 1024." Kein Dropout-Sweep für diese
+# Datensätze -> dropout=0.3 fest (wie im Original-Skript).
+# batch_size=1024, max_steps_per_epoch=500, epochs=10, warmup_steps=10
+# (alle wie im Original-Skript).
+
+# rel-amazon user-churn
+--dataset rel-amazon --task user-churn --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-amazon-user-churn-l4-drop03
+
+# rel-amazon item-churn
+--dataset rel-amazon --task item-churn --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-amazon-item-churn-l4-drop03
+
+# rel-amazon user-ltv
+--dataset rel-amazon --task user-ltv --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-amazon-user-ltv-l4-drop03
+
+# rel-amazon item-ltv
+--dataset rel-amazon --task item-ltv --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-amazon-item-ltv-l4-drop03
+
+# rel-stack user-engagement
+--dataset rel-stack --task user-engagement --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-stack-user-engagement-l4-drop03
+
+# rel-stack user-badge
+--dataset rel-stack --task user-badge --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-stack-user-badge-l4-drop03
+
+# rel-stack post-votes
+--dataset rel-stack --task post-votes --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-stack-post-votes-l4-drop03
+
+# rel-hm user-churn
+--dataset rel-hm --task user-churn --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-hm-user-churn-l4-drop03
+
+# rel-hm item-sales
+--dataset rel-hm --task item-sales --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 500 --warmup_steps 10 --run_name relgt-rel-hm-item-sales-l4-drop03
