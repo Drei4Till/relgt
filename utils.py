@@ -30,6 +30,7 @@ class GloveTextEmbedding:
             self.model = SentenceTransformer("sentence-transformers/average_word_embeddings_glove.6B.300d", device=device)
         
         def __call__(self, sentences: List[str]) -> Tensor:
+            sentences = [s if isinstance(s, str) else "" for s in sentences] # there was a problem including nan values
             return torch.from_numpy(self.model.encode(sentences))
 
 def build_adjacency_hetero(hetero_data: HeteroData, undirected: bool = True):
