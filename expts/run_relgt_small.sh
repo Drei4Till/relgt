@@ -30,7 +30,7 @@ fi
 
 echo "[Task ${SLURM_ARRAY_TASK_ID}] Args: ${ARGS}"
 
-source ~/micromamba/etc/profile.d/micromamba.sh
+eval "$(/hpc/gpfs2/home/u/thomasti/micromamba/bin/micromamba shell hook --shell bash)"
 micromamba activate gt
 
 export RELBENCH_CACHE_DIR=/hpc/gpfs2/scratch/u/thomasti/relbench_cache
