@@ -15,7 +15,7 @@ mkdir -p logs
 
 # Dieses Skript wird aus dem Ordner "expts/" heraus submittet (sbatch run_relgt_small.sh).
 # main_node_ddp.py liegt eine Ebene höher im Repo-Root.
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="${SLURM_SUBMIT_DIR}"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
  
 CONFIG_FILE="${SCRIPT_DIR}/configs_small.txt"
