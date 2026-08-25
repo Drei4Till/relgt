@@ -6,7 +6,7 @@
 # (Layer, Dropout) pro Task jeweils gemäß bestem TEST-Ergebnis in Table 8
 # des RelGT-Papers (arXiv:2505.10960), da im Paper laut Text die beste
 # Kombination pro Task berichtet wird.
-# batch_size=256, max_steps_per_epoch=3000, warmup_steps=100 (wie im Original-Skript).
+# batch_size=256/128, max_steps_per_epoch=3000, warmup_steps=100 (wie im Original-Skript).
 # Original-Skript: epochs=50 nur für rel-trial/site-success, sonst 100.
 # Hier: epochs=20 für alle tasks, da im Training darüber hinaus wenig Verbesserung festgestellt werden konnte
 # Bei Gleichstand im Test-Wert wurde die erste Kombination in der Tabelle gewählt.
@@ -18,7 +18,7 @@
 --dataset rel-f1 --task driver-dnf --num_layers 1 --ff_dropout 0.4 --attn_dropout 0.4 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-f1-driver-dnf-l1-drop04
 
 # rel-event user-repeat      -> L8, dropout 0.3  (bestes Test-AUC 0.7609)
---dataset rel-event --task user-repeat --num_layers 8 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-event-user-repeat-l8-drop03
+--dataset rel-event --task user-repeat --num_layers 8 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 64 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-event-user-repeat-l8-drop03
 
 # rel-trial study-outcome    -> L8, dropout 0.3  (bestes Test-AUC 0.6861)
 --dataset rel-trial --task study-outcome --num_layers 8 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-trial-study-outcome-l8-drop03
@@ -30,16 +30,16 @@
 --dataset rel-f1 --task driver-top3 --num_layers 4 --ff_dropout 0.5 --attn_dropout 0.5 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-f1-driver-top3-l4-drop05
 
 # rel-avito user-clicks      -> L8, dropout 0.4  (bestes Test-AUC 0.6830)
---dataset rel-avito --task user-clicks --num_layers 8 --ff_dropout 0.4 --attn_dropout 0.4 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-avito-user-clicks-l8-drop04
+--dataset rel-avito --task user-clicks --num_layers 8 --ff_dropout 0.4 --attn_dropout 0.4 --epochs 20 --batch_size 64 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-avito-user-clicks-l8-drop04
 
 # rel-avito user-visits      -> L8, dropout 0.4  (bestes Test-AUC 0.6678)
---dataset rel-avito --task user-visits --num_layers 8 --ff_dropout 0.4 --attn_dropout 0.4 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-avito-user-visits-l8-drop04
+--dataset rel-avito --task user-visits --num_layers 8 --ff_dropout 0.4 --attn_dropout 0.4 --epochs 20 --batch_size 64 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-avito-user-visits-l8-drop04
 
 # rel-event user-attendance  -> L4, dropout 0.3  (bestes Test-MAE 0.2502)
---dataset rel-event --task user-attendance --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-event-user-attendance-l4-drop03
+--dataset rel-event --task user-attendance --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 20 --batch_size 64 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-event-user-attendance-l4-drop03
 
 # rel-event user-ignore      -> L8, dropout 0.5  (bestes Test-AUC 0.8157)
---dataset rel-event --task user-ignore --num_layers 8 --ff_dropout 0.5 --attn_dropout 0.5 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-event-user-ignore-l8-drop05
+--dataset rel-event --task user-ignore --num_layers 8 --ff_dropout 0.5 --attn_dropout 0.5 --epochs 20 --batch_size 64 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-event-user-ignore-l8-drop05
 
 # rel-trial study-adverse    -> L4, dropout 0.5  (bestes Test-MAE 43.9923)
 --dataset rel-trial --task study-adverse --num_layers 4 --ff_dropout 0.5 --attn_dropout 0.5 --epochs 20 --batch_size 256 --max_steps_per_epoch 3000 --warmup_steps 100 --run_name relgt-rel-trial-study-adverse-l4-drop05
