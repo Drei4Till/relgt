@@ -2,8 +2,8 @@
 #SBATCH --job-name=relgt-large
 #SBATCH --partition=epyc-gpu
 #SBATCH --gres=gpu:a100:1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=128G
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=256G
 #SBATCH --time=48:00:00
 #SBATCH --output=logs/%x_%A_%a.out
 #SBATCH --array=0-8%1        # 9 Configs (große Datensätze), max. 1 gleichzeitig laufend
