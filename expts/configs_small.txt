@@ -6,7 +6,7 @@
 # (Layer, Dropout) pro Task jeweils gemäß bestem TEST-Ergebnis in Table 8
 # des RelGT-Papers (arXiv:2505.10960), da im Paper laut Text die beste
 # Kombination pro Task berichtet wird.
-# batch_size=256/128, max_steps_per_epoch=3000, warmup_steps=100 (wie im Original-Skript).
+# batch_size=256/64, max_steps_per_epoch=3000, warmup_steps=100 (wie im Original-Skript).
 # Original-Skript: epochs=50 nur für rel-trial/site-success, sonst 100.
 # Hier: epochs=20 für alle tasks, da im Training darüber hinaus wenig Verbesserung festgestellt werden konnte
 # Bei Gleichstand im Test-Wert wurde die erste Kombination in der Tabelle gewählt.

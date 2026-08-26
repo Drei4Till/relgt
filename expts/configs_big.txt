@@ -11,13 +11,13 @@
 # (alle wie im Original-Skript).
 
 # rel-amazon user-churn
---dataset rel-amazon --task user-churn --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 3 --batch_size 1024 --max_steps_per_epoch 100 --warmup_steps 10 --run_name relgt-rel-amazon-user-churn-l4-drop03
+--dataset rel-amazon --task user-churn --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 300 --warmup_steps 10 --run_name relgt-rel-amazon-user-churn-l4-drop03
 
 # rel-amazon item-churn
 --dataset rel-amazon --task item-churn --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 3 --batch_size 1024 --max_steps_per_epoch 100 --warmup_steps 10 --run_name relgt-rel-amazon-item-churn-l4-drop03
 
 # rel-amazon user-ltv
---dataset rel-amazon --task user-ltv --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 3 --batch_size 1024 --max_steps_per_epoch 100 --warmup_steps 10 --run_name relgt-rel-amazon-user-ltv-l4-drop03
+--dataset rel-amazon --task user-ltv --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 10 --batch_size 1024 --max_steps_per_epoch 100 --warmup_steps 10 --run_name relgt-rel-amazon-user-ltv-l4-drop03
 
 # rel-amazon item-ltv
 --dataset rel-amazon --task item-ltv --num_layers 4 --ff_dropout 0.3 --attn_dropout 0.3 --epochs 3 --batch_size 1024 --max_steps_per_epoch 100 --warmup_steps 10 --run_name relgt-rel-amazon-item-ltv-l4-drop03
